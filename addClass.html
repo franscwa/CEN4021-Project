@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Class</title>
+</head>
+<body>
+    <h2>Add a New Class</h2>
+    <form method="POST" action="/add_courses">
+        <label for="className">Class Name:</label>
+        <input type="text" name="className" required><br><br>
+
+        <label for="classCode">Class Code:</label>
+        <input type="text" name="classCode" required><br><br>
+
+        <label for="seatTaken">Seats Taken:</label>
+        <input type="number" name="seatTaken" required><br><br>
+
+        <label for="totalSeatsTaken">Total Seats:</label>
+        <input type="number" name="totalSeatsTaken" required><br><br>
+
+        <input type="submit" value="Add Class">
+    </form>
+</body>
+</html>
