@@ -78,7 +78,7 @@ def searchCourse():
 @app.route('/find_course/<string:class_code>', methods = ['GET'])
 def findCourse(class_code):
     if request.method == 'GET':
-
+        request.get_json()
         cursor = conn.cursor()
 
         grab_from_table = """
@@ -89,7 +89,7 @@ def findCourse(class_code):
         #return all data from query 
         result = cursor.fetchall()
         cursor.close()
-
+        
         if(result):
             
             class_info = ""

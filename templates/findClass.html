@@ -2,12 +2,43 @@
 <html>
 <head>
     <title>Search Course</title>
+    <link rel="stylesheet" href="/static/findClass.css">
 </head>
 <body>
-    <h2>Find a course by typing in the course code</h2>
-    <form method="GET" action="/search_course">
-        <label for="classCode">Class Code:</label>
-        <input type="text" name="classCode" placeholder="Enter Class Code">
-        <button type="submit">Search</button>
-    </form>
+    <div class="page">
+        <div class="navBar">
+                    <div class="insideNavbar">
+                        <img src="/static/fiuLogo.png" class="fiuLogo"/>
+                        <a href="/"> Course Checker</a>
+                    </div> 
+                </div>
+
+        <div class="backgroundImage">
+            <div class ="page">
+    
+                <div class="informationContainer">
+                    <div class="pageInformation">
+                        <h1 class="header1">Find a course at Florida International University</h1>
+                        <h2 class="header2"> Start by typing in the class code of a course:  </h2>
+                        
+                       
+                            <form method="GET" action="/search_course" class="formContainer">
+                                <input type="text" name="classCode" class="classInput" placeholder="Enter Class Code">
+                                <button type="submit" class="buttonStyle">Search</button>
+                            </form>
+                  
+                        
+                    </div>
+                </div>
+
+
+            </div>            
+        </div>
+
+
+    </div>
+
+    
+    
+
 </body>
