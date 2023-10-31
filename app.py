@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, request, render_template
+from flask import Flask, redirect, url_for, request, render_template, jsonify
 import pymysql
 import os
 from dotenv import load_dotenv
@@ -74,7 +74,6 @@ def searchCourse():
 
 
 
-#Route to get the courses based on a course code
 @app.route('/find_course/<string:class_code>', methods = ['GET'])
 def findCourse(class_code):
     if request.method == 'GET':
@@ -86,20 +85,24 @@ def findCourse(class_code):
         """
 
         cursor.execute(grab_from_table, (class_code,))
-        #return all data from query 
         result = cursor.fetchall()
         cursor.close()
         
-        if(result):
+        if result:
+            course_list = []
             
-            class_info = ""
-
             for row in result:
-                class_info += f' Class Name: {row[1]}, Seats Taken: {row[3]}, Total Seats: {row[4]}, Is Full: {row[5]}'
-            #return render_template('classInfo.html', class_info = class_info)
-            return class_info + "\n"
-
-    return 'Invalid request'
+                course_data = {
+                    "Class Name": row[1],
+                    "Seats Taken": row[3],
+                    "Total Seats": row[4],
+                    "Is Full": row[5]
+                }
+                course_list.append(course_data)
+            
+            return jsonify(course_list)
+        
+    return jsonify({"error": "Invalid request"})
 
 
 
