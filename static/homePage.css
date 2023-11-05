@@ -4,6 +4,9 @@
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+/* Used to reset the stylings of all a tags*/
+a{ all: unset;}
+
 
 .HomePage{
     background-color: blue;
@@ -37,6 +40,7 @@
 
 .firstHalf{
     width: 50%;
+    
 }
 .block1Half{
     display: flex;

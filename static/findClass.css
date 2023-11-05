@@ -8,9 +8,11 @@ body, html {
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+/* Used to reset the stylings of all a tags*/
+a{ all: unset;}
+
 
 .page{
-   
     height: 100%;
     width: 100%;  
 }
@@ -36,12 +38,6 @@ body, html {
     z-index: -1; 
 }
 
-
-.page{
-    height: 100%;
-    width: 100%;
-
-}
 
 .navBar{
     background-color: #08133f;
@@ -102,6 +98,7 @@ body, html {
     height: 60px;
     margin-bottom: 10px;
     margin-top: 10px;
+    padding-left: 3%;
 }
 
 .buttonStyle{

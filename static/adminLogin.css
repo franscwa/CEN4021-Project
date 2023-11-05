@@ -1,0 +1,118 @@
+body, html {
+    height: 100%;
+    width: 100%;
+  }
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* Used to reset the stylings of all a tags*/
+a{ all: unset;}
+
+/* Styling for the navbar.. again*/
+.navBar{
+    background-color: #08133f;
+    color: #fff;
+    padding: 10px;
+    font-size: 24px;
+    width: 100%;
+}
+.insideNavbar{
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    transition: color 0.5s;
+}
+.insideNavbar:hover{
+    color: #f1c300;
+    cursor: pointer;
+}
+.fiuLogo{
+    width: 5%
+}
+
+
+/* Styling for the boxing bit inside the page, as in the whole page exlcusing the navbar*/
+.page{
+    height: 100vh;
+    width: 100%;
+    
+}
+
+/*the actual apge itself */
+.theActualPage {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.theActualPage::before {
+    content: "";
+    background-image: url(findCoursebg.jpg);
+    filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(180deg);
+    opacity: 0.8;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.actualPageContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width:100%;
+}
+
+.loginContainer{
+    background-color: #2B2D30;
+    color: white;
+    padding: 40px;
+    border-radius: 3%;
+}
+.insideLogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* Meant to be the input text boxes for the user name and password*/
+.classInput{
+    width: 426px;
+    border: 100px;
+    border-radius: 43px;
+    height: 30px;
+    margin-top: 5px;
+    padding-left: 3%;
+}
+.buttonStyle{
+    background-color: #E2E2E2;
+    font-size: 20px;
+    width: 426px;
+    padding: 5px;
+}
+.buttonStyle:hover{
+    opacity: 0.6;
+    transition: opacity .4s;
+    cursor: pointer;
+}
+.incorrectText{
+    color: red;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    visibility: hidden; 
+}
+
+
+

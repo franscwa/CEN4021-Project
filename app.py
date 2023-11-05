@@ -27,6 +27,18 @@ def index():
     return render_template('homePage.html')
 
 
+''' In production DELTE function
+@app.route('/CourseList/<int:id>')
+def delete():
+    cursor = conn.cursor()
+
+    delete_class_query = """
+    DELETE FROM courseInfo WHERE %
+    """
+ '''
+
+
+
 @app.route('/bruh')
 def bruh():
     cursor = conn.cursor()
@@ -69,15 +81,19 @@ def searchCourse():
         else:
             return "Class not found"
         """
-
+        
     return render_template('findClass.html')
 
+
+@app.route('/admin_login')
+def admingLoginPage():
+    return render_template('adminLogin.html')
 
 
 @app.route('/find_course/<string:class_code>', methods = ['GET'])
 def findCourse(class_code):
     if request.method == 'GET':
-        request.get_json()
+        
         cursor = conn.cursor()
 
         grab_from_table = """
@@ -92,15 +108,16 @@ def findCourse(class_code):
             course_list = []
             
             for row in result:
-                course_data = {
-                    "Class Name": row[1],
-                    "Seats Taken": row[3],
-                    "Total Seats": row[4],
-                    "Is Full": row[5]
+                course_data = {                    
+                    "ClassName": row[1],
+                    "classCode": row[2],
+                    "SeatsTaken": row[3],
+                    "TotalSeats": row[4],
+                    "IsFull": row[5]
                 }
                 course_list.append(course_data)
             
-            return jsonify(course_list)
+            return render_template('classInfo.html', course_list=course_list)
         
     return jsonify({"error": "Invalid request"})
 
