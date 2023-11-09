@@ -37,6 +37,13 @@ def delete():
     """
  '''
 
+@app.route('/delete_course')
+def deleteCourse():
+    return render_template('deleteCourse.html')
+
+@app.route('/update_course')
+def updateCourse():
+    return render_template('updateCourse.html')
 
 
 @app.route('/bruh')
@@ -46,9 +53,9 @@ def bruh():
     # Define a SQL query to create a new table
     
     create_table_query = """
-        INSERT INTO courseInfo (className, classCode, seatTaken, totalSeatsTaken, isFull)
+        INSERT INTO courses2 (classCode, className, seatTaken, totalSeatsTaken, profssorName, modality, classSchedule)
         VALUES
-        ('Computer Science 101', 'CS101', 30, 50, 0)
+        ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Online', 'Monday 9:30 AM - 12:30 PM')
     """
 
     cursor.execute(create_table_query)
@@ -69,7 +76,7 @@ def searchCourse():
         class_code = request.args.get('classCode')
 
         check_exist = """
-            SELECT * FROM courseInfo WHERE classCode = %s
+            SELECT * FROM courses2 WHERE classCode = %s
         """
         cursor.execute(check_exist, (class_code,))
         result = cursor.fetchall()
@@ -97,7 +104,7 @@ def findCourse(class_code):
         cursor = conn.cursor()
 
         grab_from_table = """
-            SELECT * FROM courseInfo WHERE classCode = %s
+            SELECT * FROM courses2 WHERE classCode = %s
         """
 
         cursor.execute(grab_from_table, (class_code,))
@@ -109,15 +116,17 @@ def findCourse(class_code):
             
             for row in result:
                 course_data = {                    
-                    "ClassName": row[1],
-                    "classCode": row[2],
+                    "classCode": row[1],
+                    "ClassName": row[2],
                     "SeatsTaken": row[3],
                     "TotalSeats": row[4],
-                    "IsFull": row[5]
+                    "professorName": row[5],
+                    "modality": row[6],
+                    "classSchedule": row[7]
                 }
                 course_list.append(course_data)
             
-            return render_template('classInfo.html', course_list=course_list)
+            return render_template('classInfo.html', course_list=course_list, class_code=class_code)
         
     return jsonify({"error": "Invalid request"})
 
@@ -130,16 +139,19 @@ def add_courses():
         class_code = request.form['classCode']
         seat_taken = int(request.form['seatTaken'])
         total_seats = int(request.form['totalSeatsTaken'])
+        professor_name = request.form['profssorName']
+        modality = request.form['modality']
+        class_schedule = request.form['classSchedule']
 
         cursor = conn.cursor()
 
         add_to_table = """
-            INSERT INTO courseInfo (className, classCode, seatTaken, totalSeatsTaken, isFull)
-            VALUES (%s, %s, %s, %s, %s)
+            INSERT INTO courses2 (className, classCode, seatTaken, totalSeatsTaken, profssorName, modality, classSchedule)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
         """
 
         # Execute the query to create the 'courses' table
-        cursor.execute(add_to_table, (class_Name, class_code, seat_taken, total_seats, 0))
+        cursor.execute(add_to_table, (class_Name, class_code, seat_taken, total_seats, professor_name, modality, class_schedule))
 
         # Commit the changes to the database
         conn.commit()

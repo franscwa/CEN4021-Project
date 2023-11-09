@@ -84,12 +84,19 @@ a{ all: unset;}
     background-color: #f1c300;
     border: none;
     color: black;
-    padding: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    transition: all 0.3s ease-in-out
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out 
+}
+.buttonStyle:hover{
+    opacity:0.9;
+    transition: opacity .2s;
+    cursor: pointer;
 }
 
 .miniNav{
@@ -97,9 +104,25 @@ a{ all: unset;}
     display: flex;
     width:100%;
     background-color: #0d2174;
+    font-size: 26px;
+    color: white;
+}
+.miniFirstHalf{
+    width: 40%;
+    padding-top: 10px;
+    padding-left: 4%;
+}
+.miniSecondHalf{
+    width: 60%;
+    display: flex;
+    gap: 2%;
+}
+.secondHalfText{
+    padding-top: 10px;
 }
 .innerNav{
     display: flex;
+    gap:2%
 }
 
 .classPagePart{
@@ -113,7 +136,11 @@ a{ all: unset;}
     display: flex;
     flex-wrap: wrap;
     padding-left: 5%;
-    padding-bottom: 5%;
+    padding-bottom: 11%;
     padding-right: 5%;
     padding-top: 2%;
+}
+
+.textSide{
+    padding: 2% ;
 }

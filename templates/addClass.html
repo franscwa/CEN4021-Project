@@ -2,23 +2,114 @@
 <html>
 <head>
     <title>Add Class</title>
+    <link rel="stylesheet" href="/static/addClass.css" />
+    <script src="/static/classValidation.js"> </script>
 </head>
 <body>
-    <h2>Add a New Class</h2>
-    <form method="POST" action="/add_courses">
-        <label for="className">Class Name:</label>
-        <input type="text" name="className" required><br><br>
+    <div>
 
-        <label for="classCode">Class Code:</label>
-        <input type="text" name="classCode" required><br><br>
+    
+    <div class="page">
+        <div class="navBar">
+            <div class="insideNavbar">
+                <img src="/static/fiuLogo.png" class="fiuLogo"/>
+                <a href="/"> Course Checker</a>
+            </div> 
+        </div>
 
-        <label for="seatTaken">Seats Taken:</label>
-        <input type="number" name="seatTaken" required><br><br>
 
-        <label for="totalSeatsTaken">Total Seats:</label>
-        <input type="number" name="totalSeatsTaken" required><br><br>
 
-        <input type="submit" value="Add Class">
-    </form>
+
+        <div class="theActualPage">
+                <div class="headingText">
+                    <h1> Register Form </h1>
+                    <h2> Fill out the form carefully for registration </h2>      
+                </div>
+                     
+                
+                <div class="actualPageContainer">
+
+                <div class="backgroundImage">        
+
+
+                    <div class="formContainer">
+
+
+                        <div class="formStyle">
+                            <h1 class="banner"> Class Registration Form </h1>
+
+                            <div class="formStyleInput">
+                                <form method="POST" action="/add_courses">
+
+                                    <div class="inputSpaces">
+                                    <label for="className" class="labelInputSpace">Class Name:</label>
+                                        <input type="text" name="className" required class="inputSpace" id="classInput">
+                                    </div>
+                                        <p class="inputRequired" id="nameId"> Input is required! </p>
+                                        <br>
+
+                                    <div class="inputSpaces">
+                                        <label for="classCode" class="labelInputSpace">Class Code:</label>
+                                        <input type="text" name="classCode" required class="inputSpace" id="codeInput">
+                                    </div>
+                                        <p class="inputRequired" id="codeId"> Input is required! </p>
+                                        <br>
+
+                                    <div class="inputSpaces">        
+                                        <label for="seatTaken" class="labelInputSpace">Seats Taken:</label>
+                                        <input type="number" name="seatTaken" required class="inputSpace" id="seatsTakenInput">
+                                    </div>
+                                        <p class="inputRequired" id="seatsTakenId"> Input is required! </p>
+                                        <br>
+
+                                    <div class="inputSpaces">     
+                                        <label for="totalSeatsTaken" class="labelInputSpace">Total Seats:</label>
+                                        <input type="number" name="totalSeatsTaken" required class="inputSpace" id="seatsTotalInput">
+                                    </div>
+                                        <p class="inputRequired" id="seatsTotalId"> Input is required! </p>
+                                        <br>                          
+                                        
+
+                                    <div class="inputSpaces">     
+                                        <label for="totalSeatsTaken" class="labelInputSpace">Professor's name:</label>
+                                        <input type="text" name="profssorName" required class="inputSpace" id="professorInput">
+                                    </div>
+                                        <p class="inputRequired" id="professorId"> Input is required! </p>
+                                        <br>
+
+                                    <div class="inputSpaces">  
+                                        <label for="totalSeatsTaken" class="labelInputSpace">Modality:</label>
+                                        <input type="text" name="modality" required class="inputSpace" id="modalityInput">
+                                    </div>
+                                        <p class="inputRequired" id="modalityId"> Input is required! </p>
+                                        <br>
+
+                                    <div class="inputSpaces">  
+                                        <label for="totalSeatsTaken" class="labelInputSpace">Class schedule:</label>
+                                        <input type="text" name="classSchedule" required class="inputSpace" id="">
+                                    </div>    
+                                        <p class="inputRequired" id="scheduleId"> Input is required! </p>
+                                        <br>
+
+                                        
+
+                                        <input type="submit" value="Add Class" class="buttonStyle">
+                                </form>                
+                            </div>                
+                        </div>
+
+
+                    </div>
+        </div>
+        </div>
+        </div>
+
+    <div>
+        
+    </div>
+    
+
+    </div>
+</div>
 </body>
 </html>

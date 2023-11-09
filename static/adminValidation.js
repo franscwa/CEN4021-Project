@@ -1,8 +1,8 @@
 const validate = (event) =>{
     event.preventDefault();
 
-    const userName = "adminUser123"
-    const passWord = "lion1234"
+    const userName = "bruh"
+    const passWord = "bruh"
 
     const usernameInput = document.getElementById("usernameInput");
     const passswordInput = document.getElementById("passwordInput");

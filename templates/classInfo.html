@@ -13,53 +13,41 @@
             </div> 
         </div>
 
-        
-
             <div class="miniNav">
-                <p> Searching for another class?  </p>
-                <form method="GET" action="/search_course" class="formContainer">
-                    <div class="innerNav">
-                        <input type="text" name="classCode" class="classInput" placeholder="Enter Class Code">
-                        <button type="submit" class="buttonStyle">Search</button> 
-                    </div>
-                    
-                </form>
+                <div class="miniFirstHalf">
+                    <p> Showing classes for: {{ class_code }} </p> 
+                </div>
+                
+                <div class="miniSecondHalf">
+                    <p class="secondHalfText"> Searching for another class?  </p>
+
+                    <form method="GET" action="/search_course" class="formContainer">
+                        <div class="innerNav">
+                            <input type="text" name="classCode" class="classInput" placeholder="Enter Class Code">
+                            <button type="submit" class="buttonStyle">Search</button> 
+                        </div>
+                        
+                    </form>                
+                </div>
+               
             </div>
            
-            
-
                 <div class="classOuterContainer">
                     <div class="stuffs">
                         {% for i in course_list %}
                         <div class="classContainer">
                             <img src="/static/courseCardImage.png" class="innerImage"/> 
-                            <div>
+                            <div class="textSide">
                                 <p>Class Name: {{  i["ClassName"]  }}</p>
                                 <p>Class Code: {{  i["classCode"]  }}</p>
                                 <p>Total Seats: {{  i["TotalSeats"]  }}</p>
                                 <p>Seats Taken: {{  i["SeatsTaken"]  }}</p> 
-                                <p>Total Seats: {{  i["TotalSeats"]  }}</p>
                                 <p>Professor: M. Charters</p>
                                 <p>Modality: Hybrid</p>
                                 <p>Times: Wed: 9:30Am - 10:30 AM</p> <br> 
                             </div>
                             
                         </div> 
-                        <div class="classContainer">
-                            <img src="/static/courseCardImage.png" class="innerImage"/> 
-                            <div>
-                                <p>Class Name: {{  i["ClassName"]  }}</p>
-                                <p>Class Code: {{  i["classCode"]  }}</p>
-                                <p>Total Seats: {{  i["TotalSeats"]  }}</p>
-                                <p>Seats Taken: {{  i["SeatsTaken"]  }}</p> 
-                                <p>Total Seats: {{  i["TotalSeats"]  }}</p>
-                                <p>Professor: M. Charters</p>
-                                <p>Modality: Hybrid</p>
-                                <p>Times: Wed: 9:30Am - 10:30 AM </p> <br> 
-                            </div>
-                            
-                        </div>
-                        
                         {% endfor %} 
                         
                     </div>
