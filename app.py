@@ -130,10 +130,10 @@ def updateCourse(class_id):
 
     cursor = conn.cursor()
     update_course ="""
-    UPDATE courses SET className = %s, classCode = %s, seatTaken = %s, totalSeatsTaken = %s, professorName = %s, modality = %s, classSchedule = %s
-    WHERE class_id = %s 
+    UPDATE courses2 SET className = %s, classCode = %s, seatTaken = %s, totalSeatsTaken = %s, profssorName = %s, modality = %s, classSchedule = %s
+    WHERE classId = %s
     """
-    cursor.execute(update_course, (class_id,))
+    cursor.execute(update_course, (class_Name, class_code, seat_taken, total_seats, professor_name, modality, class_schedule, class_id,))
     conn.commit()
     cursor.close()
 

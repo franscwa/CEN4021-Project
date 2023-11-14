@@ -22,12 +22,30 @@
                     <div class="backgroundImage">
                         {% for i in course_list %}
                         <div>
-                            <form action="" method="POST">
+                            <form action="/update_course/{{ i["classId"] }}" method="POST">
+                                
+                                <label for="className"> class name: {{i["ClassName"]}} </label>
+                                <input type="text" name="className"> </input>
+                                <label for="classCode"> classCode: {{i["classCode"]}} </label>
+                                <input type="text" name="classCode"> </input>
+                                <label for="seatTaken"> seats taken: {{i["SeatsTaken"]}} </label>
+                                <input type="text" name="seatTaken"> </input>
+                                <label for="totalSeatsTaken"> total seats: {{i["TotalSeats"]}} </label>
+                                <input type="text" name="totalSeatsTaken"> </input>
+                                <label for="profssorName"> professor name: {{i["professorName"]}} </label>
+                                <input type="text" name="profssorName"> </input>
+                                <label for="modality"> modality: {{i["modality"]}} </label>
+                                <input type="text" name="modality"> </input>
+                                <label for="classSchedule"> modality: {{i["classSchedule"]}} </label>
+                                <input type="text" name="classSchedule"> </input>   
+                                                           
 
+                                <input type="submit" value="Update Class" class="buttonStyle">
+                                <br> 
+                                <br> 
+                                <br> 
+                                <br> 
                             </form>
-                            <h1>classCode: {{i["classCode"]}}  </h1>
-                            <h1>class name: {{i["ClassName"]}} </h1>
-                            <h1>  </h1>
                         </div>
                         {% endfor %}
                     </div>
