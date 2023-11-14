@@ -20,7 +20,19 @@
                 <div class="actualPageContainer">
 
                     <div class="backgroundImage">
-                    
+
+                        <div>
+                        {% for i in course_list %}
+                            <h1> Class ID: {{ i["classId"]}} </h1>
+                            <h1> class code: {{ i["classCode"] }} </h1>
+                            
+                            <form action="/delete_course/{{ i["classId"] }}"  method="POST">
+                                <button> Delete </button>
+                            </form>
+                        {% endfor %}
+                        </div>
+
+
                     </div>
                 </div>
             </div>

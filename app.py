@@ -22,30 +22,128 @@ conn = pymysql.connect(
 
 #mysql = MySQL(app)
 
+"""
+    Routing used for the home page, nothing too special here, just returns the home page html is all 
+"""
 @app.route('/')
 def index():
     return render_template('homePage.html')
 
 
-''' In production DELTE function
-@app.route('/CourseList/<int:id>')
-def delete():
+
+
+"""
+    This is the routing used to delete a course, first one shows all the courses, second one is the logic to delete a course with 
+    the delte button in html
+"""
+@app.route('/delete_course_page')
+def deleteCoursePage():
     cursor = conn.cursor()
 
-    delete_class_query = """
-    DELETE FROM courseInfo WHERE %
+    return_allclasses_query = """ 
+        SELECT * FROM courses2 
     """
- '''
+    cursor.execute(return_allclasses_query)
+    course_data = cursor.fetchall()
 
-@app.route('/delete_course')
-def deleteCourse():
-    return render_template('deleteCourse.html')
+    cursor.close()
 
-@app.route('/update_course')
-def updateCourse():
-    return render_template('updateCourse.html')
+    if course_data:
+        course_list = []
+
+        for row in course_data:
+            course_info = {
+                    "classId": row[0],
+                    "classCode": row[1],
+                    "ClassName": row[2],
+                    "SeatsTaken": row[3],
+                    "TotalSeats": row[4],
+                    "professorName": row[5],
+                    "modality": row[6],
+                    "classSchedule": row[7]
+            }
+            course_list.append(course_info)
 
 
+    return render_template('deleteCourse.html', course_list=course_list)
+
+@app.route('/delete_course/<string:class_id>', methods=['POST'])
+def deleteCourse(class_id):
+    cursor = conn.cursor()
+    delete_course = """
+    DELETE FROM courses2 WHERE classId = %s
+    """
+
+    cursor.execute(delete_course, (class_id,))
+
+    conn.commit()
+    cursor.close()
+
+
+    return redirect('/delete_course_page')
+
+
+
+
+@app.route('/update_course_page')
+def updateCoursePage():
+    cursor = conn.cursor()
+    return_classes = """
+    SELECT * FROM courses2
+    """
+
+    cursor.execute(return_classes)
+
+    course_data = cursor.fetchall()
+
+    cursor.close()
+
+    if course_data:
+        course_list = []
+        for row in course_data:
+            course_info = {
+                    "classId": row[0],
+                    "classCode": row[1],
+                    "ClassName": row[2],
+                    "SeatsTaken": row[3],
+                    "TotalSeats": row[4],
+                    "professorName": row[5],
+                    "modality": row[6],
+                    "classSchedule": row[7]
+            }
+            course_list.append(course_info)
+
+
+    return render_template('/updateCourse.html', course_list=course_list)
+
+
+@app.route("/update_course/<string:class_id>", methods =['POST'])
+def updateCourse(class_id):
+
+    class_Name = request.form['className']
+    class_code = request.form['classCode']
+    seat_taken = int(request.form['seatTaken'])
+    total_seats = int(request.form['totalSeatsTaken'])
+    professor_name = request.form['profssorName']
+    modality = request.form['modality']
+    class_schedule = request.form['classSchedule']
+
+    cursor = conn.cursor()
+    update_course ="""
+    UPDATE courses SET className = %s, classCode = %s, seatTaken = %s, totalSeatsTaken = %s, professorName = %s, modality = %s, classSchedule = %s
+    WHERE class_id = %s 
+    """
+    cursor.execute(update_course, (class_id,))
+    conn.commit()
+    cursor.close()
+
+    return redirect("/update_course_page")
+
+
+"""
+    Routing that gives us a bit of a ton of courses to work with in our database, just used for testing and Flask routing
+    practice
+"""
 @app.route('/bruh')
 def bruh():
     cursor = conn.cursor()
@@ -55,7 +153,11 @@ def bruh():
     create_table_query = """
         INSERT INTO courses2 (classCode, className, seatTaken, totalSeatsTaken, profssorName, modality, classSchedule)
         VALUES
-        ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Online', 'Monday 9:30 AM - 12:30 PM')
+        ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Online', 'Monday 9:30 AM - 12:30 PM'),
+        ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Online', 'Tuesday 9:30 AM - 12:30 PM'),
+        ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Online', 'Wednesday 9:30 AM - 12:30 PM'),
+        ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Online', 'Thursday 9:30 AM - 12:30 PM'),
+        ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Online', 'Friday 9:30 AM - 12:30 PM')
     """
 
     cursor.execute(create_table_query)
@@ -65,7 +167,8 @@ def bruh():
 
     # Close the cursor
     cursor.close()
-    return 'helo there'
+    return 'helo there, classes added to db'
+
 
 
 
@@ -161,6 +264,7 @@ def add_courses():
         return 'class added successfully'
         
     return render_template('addClass.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
