@@ -36,7 +36,7 @@ def index():
     This is the routing used to delete a course, first one shows all the courses, second one is the logic to delete a course with 
     the delte button in html
 """
-@app.route('/delete_course_page')
+@app.route('/admin/delete_course_page')
 def deleteCoursePage():
     cursor = conn.cursor()
 
@@ -80,12 +80,12 @@ def deleteCourse(class_id):
     cursor.close()
 
 
-    return redirect('/delete_course_page')
+    return redirect('/admin/delete_course_page')
 
 
 
 
-@app.route('/update_course_page')
+@app.route('/admin/update_course_page')
 def updateCoursePage():
     cursor = conn.cursor()
     return_classes = """
@@ -137,7 +137,7 @@ def updateCourse(class_id):
     conn.commit()
     cursor.close()
 
-    return redirect("/update_course_page")
+    return redirect("/admin/update_course_page")
 
 
 """
@@ -235,7 +235,7 @@ def findCourse(class_code):
 
 
 
-@app.route('/add_courses', methods=['POST', 'GET'])
+@app.route('/admin/add_courses', methods=['POST', 'GET'])
 def add_courses():
     if request.method == 'POST':
         class_Name = request.form['className']
@@ -264,6 +264,11 @@ def add_courses():
         return 'class added successfully'
         
     return render_template('addClass.html')
+
+@app.route('/admin/admin_selects')
+def adminSelect():
+    return render_template('adminSelect.html')
+
 
 
 if __name__ == "__main__":
