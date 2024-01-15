@@ -40,3 +40,57 @@ a{ all: unset;}
 .fiuLogo{
     width: 5%
 }
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-group input[type="text"] {
+    width: calc(100% - 12px); /* Adjust width as needed */
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+}
+
+.backgroundImage {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+    background-color:#0f288a ;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonStyle{
+    background-color: #E2E2E2;
+    font-size: 20px;
+    width: 426px;
+    padding: 5px;
+}
+.buttonStyle:hover{
+    opacity: 0.6;
+    transition: opacity .4s;
+    cursor: pointer;
+}
+
+.headers{
+    background-color:#0f288a;
+    padding-bottom: 1%;
+    color: white;
+    padding-top: 0.5%;
+}

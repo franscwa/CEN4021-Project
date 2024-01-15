@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Administrator Login</title>
-    <link rel="stylesheet" href="/static/adminLogin.css" />
+    <link rel="stylesheet" href="/static/deleteCourse.css" />
     <script src="/static/"> </script>
 </head>
 <body>
@@ -18,19 +18,32 @@
 
             <div class="theActualPage">
                 <div class="actualPageContainer">
-
+                    <div class="headers">
+                        <h1> Delete a Course </h1>
+                        
+                    </div>
+                    
                     <div class="backgroundImage">
-
-                        <div>
+                        
+                        
                         {% for i in course_list %}
-                            <h1> Class ID: {{ i["classId"]}} </h1>
-                            <h1> class code: {{ i["classCode"] }} </h1>
+                        <div class="courseList">
                             
+                            <h1> Class Code: {{ i["classCode"] }} </h1>
+                            <p>Class Name: {{  i["ClassName"]  }}</p>
+                            <p>Class Code: {{  i["classCode"]  }}</p>
+                            <p>Total Seats: {{  i["TotalSeats"]  }}</p>
+                            <p>Seats Taken: {{  i["SeatsTaken"]  }}</p> 
+                            <p>Professor: {{ i["professorName"] }}</p>
+                            <p>Modality: {{ i["modality"] }}</p>
+                            <p>Times: {{ i["classSchedule"] }}</p>
+                            <br>
                             <form action="/delete_course/{{ i["classId"] }}"  method="POST">
-                                <button> Delete </button>
+                                <button class="deleteButton"> Delete </button>
                             </form>
-                        {% endfor %}
                         </div>
+                        {% endfor %}
+                        
 
 
                     </div>

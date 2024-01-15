@@ -144,8 +144,8 @@ def updateCourse(class_id):
     Routing that gives us a bit of a ton of courses to work with in our database, just used for testing and Flask routing
     practice
 """
-@app.route('/bruh')
-def bruh():
+@app.route('/courseReload')
+def courseReload():
     cursor = conn.cursor()
 
     # Define a SQL query to create a new table
@@ -154,10 +154,22 @@ def bruh():
         INSERT INTO courses2 (classCode, className, seatTaken, totalSeatsTaken, profssorName, modality, classSchedule)
         VALUES
         ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Online', 'Monday 9:30 AM - 12:30 PM'),
-        ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Online', 'Tuesday 9:30 AM - 12:30 PM'),
-        ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Online', 'Wednesday 9:30 AM - 12:30 PM'),
-        ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Online', 'Thursday 9:30 AM - 12:30 PM'),
-        ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Online', 'Friday 9:30 AM - 12:30 PM')
+        ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Physical - MMC', 'Tuesday 9:30 AM - 12:30 PM'),
+        ('CS101', 'Progrmaming I',  25, 50, 'M. Charters', 'Online', 'Wednesday 9:30 AM - 12:30 PM'),
+        ('CS101', 'Progrmaming I',  35, 50, 'M. Charters', 'Physical - MMC', 'Thursday 9:30 AM - 12:30 PM'),
+        ('CS101', 'Progrmaming I',  20, 50, 'M. Charters', 'Physical - MMC', 'Friday 9:30 AM - 12:30 PM'),
+        ('CS123', 'Computer Arhcitecture',  49, 50, 'Trevor Chickovski.', 'Physical - MMC', 'Monday 3:30 AM - 5:30 PM'),
+        ('CS123', 'Computer Arhcitecture',  31, 50, 'Kianoush B.', 'Physical - MMC', 'Monday 3:30 AM - 5:30 PM'),
+        ('CS123', 'Computer Arhcitecture',  31, 50, 'Kianoush B.', 'Physical - MMC', 'Tuesday 3:30 AM - 5:30 PM'),
+        ('BIO101', 'Biology I',  29, 50, 'Dr. Yoham', 'Physical - MMC', 'Tuesday 3:30 AM - 5:30 PM'),
+        ('CHEM101', 'Chemistry I',  29, 50, 'Dr. Heuck', 'Physical - MMC', 'Thursday 3:30 AM - 5:30 PM'),
+        ('CS101', 'Progrmaming I',  20, 50, 'Whittaker', 'physical - MMC', 'Monday 9:30 AM - 12:30 PM'),
+        ('CS101', 'Progrmaming I',  20, 50, 'Whittaker', 'Online', 'Monday 9:30 AM - 12:30 PM'),
+        ('CS102', 'Progrmaming II',  49, 50, 'Whittaker', 'physical', 'Wednesday 9:30 AM - 12:30 PM'),
+        ('CS102', 'Progrmaming II',  49, 50, 'Whittaker', 'physical', 'Monday 9:30 AM - 12:30 PM'),
+        ('CS102', 'Progrmaming II',  35, 50, 'Whittaker', 'online', 'Wednesday 9:30 AM - 12:30 PM'),
+        ('CS102', 'Progrmaming II',  20, 50, 'Kianoush B.', 'physical', 'Wednesday 9:30 AM - 12:30 PM'),
+        ('CS102', 'Progrmaming II',  25, 50, 'Kianoush B.', 'physical', 'Monday 9:30 AM - 12:30 PM')
     """
 
     cursor.execute(create_table_query)
@@ -167,7 +179,7 @@ def bruh():
 
     # Close the cursor
     cursor.close()
-    return 'helo there, classes added to db'
+    return 'helo there, classes added to db (this is meant to be a dummy page to add classes and not part of project)'
 
 
 
@@ -261,7 +273,7 @@ def add_courses():
 
         # Close the cursor
         cursor.close()
-        return 'class added successfully'
+        return redirect('add_courses')
         
     return render_template('addClass.html')
 

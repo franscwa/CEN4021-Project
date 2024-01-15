@@ -40,3 +40,43 @@ a{ all: unset;}
 .fiuLogo{
     width: 5%
 }
+
+.courses{
+    height: 100%;
+    background-color: black;
+    color: white;
+}
+
+.backgroundImage {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+    background-color:#0f288a ;
+}
+
+.courseList {
+    width: calc(33.33% - 20px);
+    background-color: #2B2D30;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px; 
+    border-radius: 20px;
+}
+
+.deleteButton{
+    background-color: #c42626;
+    font-size: 20px;
+    width: 426px;
+    padding: 5px;
+}
+.deleteButton:hover{
+    opacity: 0.6;
+    transition: opacity .4s;
+    cursor: pointer;
+}
+
+.headers{
+    background-color:#0f288a;
+    padding-bottom: 1%;
+    color: white;
+}

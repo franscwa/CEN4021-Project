@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Administrator Login</title>
-    <link rel="stylesheet" href="/static/adminLogin.css" />
+    <link rel="stylesheet" href="/static/updateCourse.css" />
     <script src="/static/"> </script>
 </head>
 <body>
@@ -17,34 +17,55 @@
             </div>
 
             <div class="theActualPage">
+                <div class="headers">
+                    <h1> Update a Course</h1>
+                    
+                </div>
+
                 <div class="actualPageContainer">
 
                     <div class="backgroundImage">
                         {% for i in course_list %}
-                        <div>
+                        <div class="card">
+                            <h1> {{ i['classCode'] }} </h1>
                             <form action="/update_course/{{ i["classId"] }}" method="POST">
-                                
-                                <label for="className"> class name: {{i["ClassName"]}} </label>
-                                <input type="text" name="className"> </input>
-                                <label for="classCode"> classCode: {{i["classCode"]}} </label>
-                                <input type="text" name="classCode"> </input>
-                                <label for="seatTaken"> seats taken: {{i["SeatsTaken"]}} </label>
-                                <input type="text" name="seatTaken"> </input>
-                                <label for="totalSeatsTaken"> total seats: {{i["TotalSeats"]}} </label>
-                                <input type="text" name="totalSeatsTaken"> </input>
-                                <label for="profssorName"> professor name: {{i["professorName"]}} </label>
-                                <input type="text" name="profssorName"> </input>
-                                <label for="modality"> modality: {{i["modality"]}} </label>
-                                <input type="text" name="modality"> </input>
-                                <label for="classSchedule"> modality: {{i["classSchedule"]}} </label>
-                                <input type="text" name="classSchedule"> </input>   
-                                                           
+
+                                <div class="input-group">
+                                    <label for="className">Class name:</label>
+                                    <input type="text" name="className" value="{{ i['ClassName'] }}">
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="classCode">Class code:</label>
+                                    <input type="text" name="classCode" value="{{ i['classCode'] }}">
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="classCode">Modality:</label>
+                                    <input type="text" name="modality" value="{{ i['modality'] }}">
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="seatTaken"> seats taken: {{i["SeatsTaken"]}} </label>
+                                    <input type="text" name="seatTaken" value="{{i["SeatsTaken"]}}"> </input>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="totalSeatsTaken"> total seats:</label>
+                                    <input type="text" name="totalSeatsTaken" value="{{i["TotalSeats"]}}"> </input>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="profssorName"> Professor Name: </label>
+                                    <input type="text" name="profssorName" value="{{i["professorName"]}}"> </input>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="classSchedule"> Class Schedule: </label>
+                                    <input type="text" name="classSchedule" value=" {{i["classSchedule"]}}"> </input>   
+                                </div>
 
                                 <input type="submit" value="Update Class" class="buttonStyle">
-                                <br> 
-                                <br> 
-                                <br> 
-                                <br> 
                             </form>
                         </div>
                         {% endfor %}
